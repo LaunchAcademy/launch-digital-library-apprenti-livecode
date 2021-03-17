@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
+    "db:seed": "node ./server/bin/seed.js",
     "dev": "./node_modules/.bin/nodemon server/app.js",
     "dev:debug": "./node_modules/.bin/nodemon --inspect-brk server/app.js",
     "dev:client": "node_modules/.bin/webpack-dev-server --host 0.0.0.0",
