@@ -34,8 +34,10 @@ const BookForm = (props) => {
         }
       } else {
         const body = await response.json()
-        console.log("Posted successfully!", body);
-        setShouldRedirect(true)
+        if (body.book) {
+          console.log("Posted successfully!", body);
+          setShouldRedirect(true)
+        }
       }
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
@@ -58,9 +60,32 @@ const BookForm = (props) => {
     })
   }
 
+  // const validateInput = () => {
+  //   bookRecord.title.trim() !== ""
+  //   bookRecord.author.trim() !== ""
+
+  //   return true
+  // }
+
+  // const validateInput = () => {
+  //   let submissionErrors = {}
+  //   const requiredFields = ['title', 'author', 'pageCount']
+  //   requiredFields.forEach(field => {
+  //     if (bookRecord[field].trim() === "") {
+  //       submissionErrors = {...submissionErrors,
+  //       [field]: `Book ${_.capitalize(field)} can not be blank`}
+  //     }
+  //   })
+  //   setErrors(submissionErrors)
+  //   return _.isEmpty(submissionErrors)
+  // }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     addNewBook()
+    
+    // if (validateInput()) {
+    // }
   }
 
   if (shouldRedirect) {
